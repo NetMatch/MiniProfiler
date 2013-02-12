@@ -53,8 +53,12 @@ namespace StackExchange.Profiling.UI
                     }});
                 }};
 
-                 load('{path}jquery.1.7.1.js?v={version}', initMp);
-                
+                if(typeof window.define === ""function"" && window.define.amd){{
+                    require([""jquery""], function(){{jQueryMP = jQuery; initMp();}});
+                }}
+                else {{
+                    load('{path}jquery.1.7.1.js?v={version}', initMp);
+                }}
         }};
 
         var w = 0;        
